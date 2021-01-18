@@ -40,4 +40,7 @@ public class User {
 
     @OneToMany(mappedBy = "userCommenter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "userLiked", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes;
 }
