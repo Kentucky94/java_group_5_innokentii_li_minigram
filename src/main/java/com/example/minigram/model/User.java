@@ -37,4 +37,7 @@ public class User {
 
     @OneToMany(mappedBy = "userPublisher", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
+
+    @OneToMany(mappedBy = "userCommenter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 }
