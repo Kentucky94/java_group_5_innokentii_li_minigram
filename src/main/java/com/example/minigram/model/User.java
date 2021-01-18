@@ -3,6 +3,7 @@ package com.example.minigram.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,4 +34,7 @@ public class User {
 
     @Column
     private int subscribersCount;
+
+    @OneToMany(mappedBy = "userPublisher", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
 }
