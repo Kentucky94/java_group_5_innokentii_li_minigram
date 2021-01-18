@@ -43,4 +43,10 @@ public class User {
 
     @OneToMany(mappedBy = "userLiked", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes;
+
+    @OneToMany(mappedBy = "userSubscriber", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subscription> subscribers;
+
+    @OneToMany(mappedBy = "userSubscribedTo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subscription> subscribedTo;
 }
