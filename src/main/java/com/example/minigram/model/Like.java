@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Data
 @Entity
@@ -18,9 +17,18 @@ public class Like {
     private Integer id;
 
     @Column
-    private LocalDateTime datetime;
+    private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User userLiked;
+
+    @Override
+    public String toString() {
+        return "Like{" +
+                "id=" + id +
+                ", datetime=" + datetime +
+                ", userLiked=" + userLiked.getId() +
+                '}';
+    }
 }

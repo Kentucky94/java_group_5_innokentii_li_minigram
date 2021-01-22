@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Data
 @Entity
@@ -18,15 +17,26 @@ public class Post {
     private Integer id;
 
     @Column
-    private String image;
+    private String image = "images/user.png";
 
-    @Column
+    @Column(nullable = false)
     private String description;
 
     @Column
-    private LocalDateTime datetime;
+    private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User userPublisher;
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", datetime=" + datetime +
+                ", userPublisher=" + userPublisher.getId() +
+                '}';
+    }
 }

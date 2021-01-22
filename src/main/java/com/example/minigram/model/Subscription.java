@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Data
 @Entity
@@ -21,7 +20,7 @@ public class Subscription {
     private Integer id;
 
     @Column
-    private LocalDateTime datetime;
+    private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subscriber")
@@ -30,4 +29,14 @@ public class Subscription {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subscribedTo")
     private User userSubscribedTo;
+
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "id=" + id +
+                ", datetime=" + datetime +
+                ", userSubscriber=" + userSubscriber.getId() +
+                ", userSubscribedTo=" + userSubscribedTo.getId() +
+                '}';
+    }
 }

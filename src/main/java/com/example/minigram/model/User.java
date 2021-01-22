@@ -13,33 +13,42 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+    public static final User EMPTY = new User("test", "test", "test");
+
+    public User (String name, String pass, String email) {
+        this.username = name;
+        this.password = "test";
+        this.email = "test";
+        this.id = -123;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String username;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
     @Column
-    private int postsCount;
+    private int postsCount = 0;
 
     @Column
-    private int subscriptionsCount;
+    private int subscriptionsCount = 0;
 
     @Column
-    private int subscribersCount;
+    private int subscribersCount = 0;
 
     @OneToMany(mappedBy = "userPublisher", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 
     @OneToMany(mappedBy = "userCommenter", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    private List<Comments> comments;
 
     @OneToMany(mappedBy = "userLiked", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes;
@@ -49,4 +58,5 @@ public class User {
 
     @OneToMany(mappedBy = "userSubscribedTo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Subscription> subscribedTo;
+
 }

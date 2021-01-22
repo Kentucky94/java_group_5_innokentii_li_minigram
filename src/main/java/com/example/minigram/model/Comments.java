@@ -7,23 +7,32 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Data
 @Entity
 @Table(name = "comments")
-public class Comment {
+public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private String text;
 
     @Column
-    private LocalDateTime datetime;
+    private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User userCommenter;
+
+    @Override
+    public String toString() {
+        return "Comments{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", datetime=" + datetime +
+                ", userCommenter=" + userCommenter.getId() +
+                '}';
+    }
 }
