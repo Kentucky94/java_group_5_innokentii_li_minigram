@@ -19,25 +19,25 @@ public class SubscriptionController {
         this.service = service;
     }
 
-    @GetMapping
-    public String root () {
-        return "subscribe";
-    }
-
-    @GetMapping("/subscribe")
-    public String example () {
-
-        return "subscribe";
-    }
-
-    @PostMapping("/subscribe")
-    @ResponseStatus(HttpStatus.SEE_OTHER)
-    public String sub (@RequestParam String subscriber, @RequestParam String subscribedTo) {
-        service.save(subscriber, subscribedTo);
-
-//        var res = repository.findAll();
-//        System.out.println(res);
-
-        return "redirect:/subscribe";
-    }
+//    @GetMapping
+//    public String root () {
+//        return "subscribe";
+//    }
+//
+//    @GetMapping("/subscribe")
+//    public String example () {
+//
+//        return "subscribe";
+//    }
+//
+//    @PostMapping("/subscribe")
+//    @ResponseStatus(HttpStatus.SEE_OTHER)
+//    public String sub (@RequestParam String subscriber, @RequestParam String subscribedTo) {
+//        service.save(subscriber, subscribedTo);
+//
+////        var res = repository.findAll();
+////        System.out.println(res);
+//
+//        return "redirect:/subscribe";
+//    }
 }

@@ -11,18 +11,21 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "posts")
+@Builder
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
+    @Builder.Default
     private String image = "images/user.png";
 
     @Column(nullable = false)
     private String description;
 
     @Column
+    @Builder.Default
     private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
